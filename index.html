@@ -1,0 +1,3565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Descubriendo los Alimentos</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#f4fbf5;
+    color:#24352a;
+    line-height:1.6;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* =========================
+   MENÚ
+========================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.97);
+    box-shadow:0 4px 18px rgba(0,0,0,.10);
+    padding:12px 20px;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:1.25rem;
+    font-weight:800;
+    color:#198754;
+}
+
+.nav-links{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav-links button{
+    border:none;
+    background:#e9f8ee;
+    color:#157347;
+    padding:8px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav-links button:hover{
+    background:#198754;
+    color:white;
+}
+
+/* =========================
+   INICIO
+========================= */
+
+.hero{
+    min-height:92vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:55px 20px;
+
+    background:
+    radial-gradient(circle at 15% 20%,#d9f99d 0,transparent 25%),
+    radial-gradient(circle at 85% 25%,#bae6fd 0,transparent 25%),
+    linear-gradient(135deg,#ecfdf5,#fefce8);
+}
+
+.hero-content{
+    max-width:950px;
+    width:100%;
+}
+
+.hero-icons{
+    font-size:4.5rem;
+    margin-bottom:20px;
+    animation:flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+.hero h1{
+    font-size:clamp(2.5rem,7vw,5rem);
+    color:#146c43;
+    margin-bottom:10px;
+    font-weight:900;
+    line-height:1.05;
+}
+
+.hero h2{
+    font-size:clamp(1.1rem,3vw,1.7rem);
+    color:#496057;
+    margin-bottom:24px;
+}
+
+.hero p{
+    max-width:780px;
+    margin:auto;
+    font-size:1.1rem;
+    color:#4b5b52;
+}
+
+.school-box{
+    display:block;
+    width:min(600px,100%);
+    margin:22px auto 4px;
+    background:rgba(255,255,255,.90);
+    padding:20px 25px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.school-box h3{
+    color:#146c43;
+    font-size:1.35rem;
+}
+
+.course{
+    margin-top:4px;
+}
+
+.members{
+    margin-top:14px;
+    font-size:1rem;
+    color:#4d5e54;
+    text-align:center;
+}
+
+.members-title{
+    display:block;
+    color:#198754;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.members-list{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+}
+
+.members-list span{
+    display:block;
+}
+
+.btn-primary{
+    display:inline-block;
+    margin-top:28px;
+    border:none;
+
+    background:linear-gradient(
+        135deg,
+        #198754,
+        #20c997
+    );
+
+    color:white;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:1.05rem;
+    font-weight:800;
+    cursor:pointer;
+
+    box-shadow:
+    0 8px 20px rgba(25,135,84,.25);
+
+    transition:.25s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px) scale(1.02);
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section{
+    max-width:1150px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title .number{
+    display:inline-block;
+    background:#198754;
+    color:white;
+    border-radius:50%;
+
+    width:45px;
+    height:45px;
+    line-height:45px;
+
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.section-title h2{
+    color:#146c43;
+    font-size:clamp(1.8rem,4vw,2.7rem);
+}
+
+.section-title p{
+    max-width:780px;
+    margin:10px auto 0;
+    color:#68776e;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:22px;
+}
+
+.card{
+    background:white;
+    border-radius:22px;
+    padding:28px;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+
+    border:1px solid #e3eee7;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+}
+
+.card-icon{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#198754;
+    margin-bottom:10px;
+}
+
+.card ul{
+    padding-left:20px;
+}
+
+.highlight{
+    background:
+    linear-gradient(
+        135deg,
+        #d1fae5,
+        #ecfccb
+    );
+
+    border-left:6px solid #198754;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin:30px 0;
+}
+
+/* =========================
+   ACTIVIDADES
+========================= */
+
+.activity-box{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.09);
+
+    text-align:center;
+
+    margin-top:30px;
+}
+
+.food-display{
+    font-size:5rem;
+    margin:20px;
+}
+
+.food-name{
+    font-size:1.7rem;
+    font-weight:800;
+    color:#146c43;
+}
+
+.choice-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.choice-btn{
+
+    border:2px solid #20c997;
+
+    background:white;
+
+    color:#146c43;
+
+    padding:13px 22px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.choice-btn:hover{
+
+    background:#20c997;
+
+    color:white;
+}
+
+.feedback{
+
+    margin:22px auto 0;
+
+    max-width:850px;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    min-height:35px;
+
+    text-align:left;
+}
+
+.feedback.correct{
+
+    background:#ecfdf5;
+
+    border:2px solid #198754;
+
+    color:#146c43;
+
+    padding:18px;
+
+    border-radius:16px;
+}
+
+.feedback.incorrect{
+
+    background:#fff7ed;
+
+    border:2px solid #f59e0b;
+
+    color:#8a4b08;
+
+    padding:18px;
+
+    border-radius:16px;
+}
+
+.feedback .why{
+
+    font-weight:400;
+
+    margin-top:8px;
+
+    color:#405149;
+}
+
+.feedback .correct-answer{
+
+    margin-top:10px;
+
+    font-weight:800;
+
+    color:#198754;
+}
+
+/* =========================
+   PH
+========================= */
+
+.ph-scale{
+
+    margin:35px auto;
+
+    max-width:900px;
+}
+
+.ph-bar{
+
+    height:55px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #dc2626,
+        #f97316,
+        #facc15,
+        #22c55e,
+        #06b6d4,
+        #3b82f6,
+        #7c3aed
+    );
+
+    box-shadow:
+    0 6px 15px rgba(0,0,0,.12);
+}
+
+.ph-numbers{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-weight:800;
+
+    margin-top:8px;
+}
+
+.ph-labels{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:10px;
+
+    font-weight:700;
+}
+
+/* =========================
+   NUTRIENTES
+========================= */
+
+.nutrient-card{
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+.nutrient-card .big-icon{
+
+    font-size:4rem;
+
+    margin-bottom:12px;
+}
+
+.nutrient-info{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    background:#f1fdf5;
+
+    border-radius:12px;
+}
+
+.nutrient-card.active .nutrient-info{
+
+    display:block;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-container{
+
+    max-width:850px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.1);
+}
+
+.progress-container{
+
+    height:10px;
+
+    background:#e5eee8;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:25px;
+}
+
+.progress-bar{
+
+    height:100%;
+
+    width:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        #198754,
+        #20c997
+    );
+
+    transition:.3s;
+}
+
+.question-number{
+
+    color:#198754;
+
+    font-weight:800;
+}
+
+.question{
+
+    font-size:1.45rem;
+
+    font-weight:800;
+
+    margin:15px 0 25px;
+}
+
+.quiz-option{
+
+    width:100%;
+
+    text-align:left;
+
+    border:2px solid #dce9e1;
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    margin-bottom:12px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    transition:.2s;
+}
+
+.quiz-option:hover{
+
+    border-color:#20c997;
+
+    background:#f1fdf5;
+}
+
+.quiz-option.correct{
+
+    background:#d1fae5;
+
+    border-color:#198754;
+}
+
+.quiz-option.incorrect{
+
+    background:#fee2e2;
+
+    border-color:#dc2626;
+}
+
+.quiz-explanation{
+
+    margin-top:18px;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:#f7faf8;
+
+    border:1px solid #dce9e1;
+
+    text-align:left;
+}
+
+.result{
+
+    text-align:center;
+
+    display:none;
+}
+
+.result-icon{
+
+    font-size:5rem;
+}
+
+.score{
+
+    font-size:3rem;
+
+    color:#198754;
+
+    font-weight:900;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    background:#146c43;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+footer strong{
+
+    font-size:1.2rem;
+}
+
+.footer-members{
+
+    margin-top:15px;
+
+    text-align:center;
+    line-height:1.9;
+}
+
+.footer-members-title{
+    font-weight:800;
+    display:block;
+    margin-bottom:5px;
+}
+
+.footer-members-list{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width:750px){
+
+    .nav-container{
+
+        flex-direction:column;
+    }
+
+    .nav-links button{
+
+        font-size:.78rem;
+
+        padding:7px 9px;
+    }
+
+    .section{
+
+        padding:60px 15px;
+    }
+
+    .hero-icons{
+
+        font-size:3.2rem;
+    }
+
+    .card{
+
+        padding:22px;
+    }
+
+    .activity-box,
+    .quiz-container{
+
+        padding:22px;
+    }
+
+    .school-box{
+
+        width:100%;
+
+        padding:18px;
+    }
+
+    .ph-labels{
+
+        font-size:.85rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     MENÚ
+========================= -->
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+<div class="logo">
+🥗 Alimentos
+</div>
+
+<div class="nav-links">
+
+<button onclick="irA('inicio')">
+Inicio
+</button>
+
+<button onclick="irA('naturaleza')">
+Naturaleza
+</button>
+
+<button onclick="irA('funciones')">
+Funciones
+</button>
+
+<button onclick="irA('clasificacion')">
+Clasificación
+</button>
+
+<button onclick="irA('ph')">
+pH
+</button>
+
+<button onclick="irA('composicion')">
+Composición
+</button>
+
+<button onclick="irA('quiz')">
+Quiz
+</button>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- =========================
+     INICIO
+========================= -->
+
+<section id="inicio" class="hero">
+
+<div class="hero-content">
+
+<div class="hero-icons">
+🍎 🥕 🥩 🥛 🌽
+</div>
+
+<h1>
+DESCUBRIENDO LOS ALIMENTOS
+</h1>
+
+<h2>
+Una experiencia interactiva para aprender sobre nuestra alimentación
+</h2>
+
+<div class="school-box">
+
+<h3>
+UNIDAD EDUCATIVA
+</h3>
+
+<p>
+<strong>“Simón Bolívar”</strong>
+</p>
+
+<p class="course">
+<strong>Curso:</strong>
+Sexto de Secundaria
+</p>
+
+<div class="members">
+
+<span class="members-title">
+INTEGRANTES
+</span>
+
+<div class="members-list">
+
+<span>
+Elvia Salinas Ramos
+</span>
+
+<span>
+Amalia Damián Mollo
+</span>
+
+<span>
+Alexander López Trujillo
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<p style="margin-top:20px">
+
+Los alimentos nos proporcionan nutrientes y energía necesarios para que
+nuestro organismo crezca, se mantenga y realice sus funciones.
+
+Aquí podrás conocer su origen, sus funciones, su clasificación y su composición
+de una manera interactiva.
+
+</p>
+
+<button
+class="btn-primary"
+onclick="irA('naturaleza')">
+
+🚀 COMENZAR
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     1 NATURALEZA
+========================= -->
+
+<section id="naturaleza" class="section">
+
+<div class="section-title">
+
+<div class="number">
+1
+</div>
+
+<h2>
+Naturaleza de los alimentos
+</h2>
+
+<p>
+
+Los alimentos pueden clasificarse según su origen.
+
+Principalmente encontramos alimentos de origen vegetal,
+animal y algunos de origen mineral.
+
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">
+🌱
+</div>
+
+<h3>
+Origen vegetal
+</h3>
+
+<p>
+Proceden de las plantas.
+</p>
+
+<br>
+
+<strong>
+Ejemplos:
+</strong>
+
+<ul>
+
+<li>Frutas</li>
+<li>Verduras</li>
+<li>Cereales</li>
+<li>Legumbres</li>
+<li>Frutos secos</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+🐄
+</div>
+
+<h3>
+Origen animal
+</h3>
+
+<p>
+Proceden de los animales.
+</p>
+
+<br>
+
+<strong>
+Ejemplos:
+</strong>
+
+<ul>
+
+<li>Carne</li>
+<li>Pescado</li>
+<li>Huevos</li>
+<li>Leche</li>
+<li>Queso</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+🧂
+</div>
+
+<h3>
+Origen mineral
+</h3>
+
+<p>
+
+Algunos productos alimentarios
+proceden de fuentes minerales.
+
+Un ejemplo conocido es la sal.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="highlight">
+
+<strong>
+💡 Idea clave:
+</strong>
+
+Cuando vemos un alimento podemos preguntarnos:
+
+<strong>
+¿De dónde viene?
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     2 FUNCIONES
+========================= -->
+
+<section id="funciones" class="section">
+
+<div class="section-title">
+
+<div class="number">
+2
+</div>
+
+<h2>
+Funciones de los alimentos
+</h2>
+
+<p>
+Los alimentos cumplen diferentes funciones
+en nuestro organismo.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">
+⚡
+</div>
+
+<h3>
+Función energética
+</h3>
+
+<p>
+
+Proporciona energía para caminar,
+estudiar, trabajar, practicar deportes
+y mantener las funciones del organismo.
+
+</p>
+
+<br>
+
+<strong>
+Principales nutrientes:
+</strong>
+
+<p>
+Carbohidratos y grasas.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+💪
+</div>
+
+<h3>
+Función constructora
+</h3>
+
+<p>
+
+Ayuda al crecimiento y a la formación
+y reparación de los tejidos.
+
+</p>
+
+<br>
+
+<strong>
+Principal nutriente:
+</strong>
+
+<p>
+Proteínas.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+🛡️
+</div>
+
+<h3>
+Función reguladora
+</h3>
+
+<p>
+
+Ayuda a regular diferentes procesos
+y funciones del organismo.
+
+</p>
+
+<br>
+
+<strong>
+Participan principalmente:
+</strong>
+
+<p>
+Vitaminas, minerales y agua.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     3 CLASIFICACIÓN
+========================= -->
+
+<section id="clasificacion" class="section">
+
+<div class="section-title">
+
+<div class="number">
+3
+</div>
+
+<h2>
+Clasificación de los alimentos
+</h2>
+
+<p>
+
+Una forma de clasificarlos es según
+su conservación: perecibles y no perecibles.
+
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">
+🧊
+</div>
+
+<h3>
+Alimentos perecibles
+</h3>
+
+<p>
+
+Se deterioran con mayor rapidez
+y necesitan condiciones adecuadas
+de conservación.
+
+</p>
+
+<br>
+
+<strong>
+Ejemplos:
+</strong>
+
+<ul>
+
+<li>Carne</li>
+<li>Pescado</li>
+<li>Leche</li>
+<li>Frutas</li>
+<li>Verduras</li>
+<li>Quesos frescos</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+📦
+</div>
+
+<h3>
+Alimentos no perecibles
+</h3>
+
+<p>
+
+Pueden conservarse durante períodos
+prolongados si se almacenan correctamente.
+
+</p>
+
+<br>
+
+<strong>
+Ejemplos:
+</strong>
+
+<ul>
+
+<li>Arroz seco</li>
+<li>Fideos secos</li>
+<li>Harina</li>
+<li>Legumbres secas</li>
+<li>Azúcar</li>
+<li>Conservas</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="activity-box">
+
+<h2>
+🎮 ¡Pon a prueba tus conocimientos!
+</h2>
+
+<p>
+
+Observa el alimento y decide
+si es perecible o no perecible.
+
+</p>
+
+<div id="foodDisplay"
+class="food-display">
+🥩
+</div>
+
+<div id="foodName"
+class="food-name">
+Carne
+</div>
+
+<div class="choice-container">
+
+<button
+class="choice-btn"
+onclick="clasificar('perecible')">
+
+🧊 PERECIBLE
+
+</button>
+
+<button
+class="choice-btn"
+onclick="clasificar('noperecible')">
+
+📦 NO PERECIBLE
+
+</button>
+
+</div>
+
+<div
+id="classificationFeedback"
+class="feedback">
+</div>
+
+<button
+class="btn-primary"
+onclick="siguienteAlimento()">
+
+➡️ Siguiente alimento
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     4 PH
+========================= -->
+
+<section id="ph" class="section">
+
+<div class="section-title">
+
+<div class="number">
+4
+</div>
+
+<h2>
+Clasificación de los alimentos por su pH
+</h2>
+
+<p>
+
+El pH indica qué tan ácida o alcalina
+es una sustancia.
+
+En general:
+
+menor que 7 = ácido,
+
+7 = neutro,
+
+mayor que 7 = alcalino.
+
+</p>
+
+</div>
+
+<div class="ph-scale">
+
+<div class="ph-bar">
+</div>
+
+<div class="ph-numbers">
+
+<span>0</span>
+<span>7</span>
+<span>14</span>
+
+</div>
+
+<div class="ph-labels">
+
+<span>
+🔴 Ácido
+</span>
+
+<span>
+⚪ Neutro
+</span>
+
+<span>
+🔵 Alcalino
+</span>
+
+</div>
+
+</div>
+
+<div class="activity-box">
+
+<h2>
+🧪 ¿Dónde colocarías este alimento?
+</h2>
+
+<div id="phFood"
+class="food-display">
+🍋
+</div>
+
+<div id="phFoodName"
+class="food-name">
+Limón
+</div>
+
+<div class="choice-container">
+
+<button
+class="choice-btn"
+onclick="responderPH('acido')">
+
+🔴 ÁCIDO
+
+</button>
+
+<button
+class="choice-btn"
+onclick="responderPH('neutro')">
+
+⚪ NEUTRO
+
+</button>
+
+<button
+class="choice-btn"
+onclick="responderPH('alcalino')">
+
+🔵 ALCALINO
+
+</button>
+
+</div>
+
+<div
+id="phFeedback"
+class="feedback">
+</div>
+
+<button
+class="btn-primary"
+onclick="siguientePH()">
+
+➡️ Siguiente alimento
+
+</button>
+
+</div>
+
+<div class="highlight">
+
+<strong>
+📌 Recuerda:
+</strong>
+
+En esta actividad usamos valores generales
+para comprender el concepto de pH.
+
+El valor exacto puede variar según el alimento
+y la forma de medición.
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     5 COMPOSICIÓN
+========================= -->
+
+<section id="composicion" class="section">
+
+<div class="section-title">
+
+<div class="number">
+5
+</div>
+
+<h2>
+Composición de los alimentos
+</h2>
+
+<p>
+
+Los alimentos contienen diferentes nutrientes
+que cumplen funciones importantes
+en nuestro organismo.
+
+</p>
+
+</div>
+
+<div class="grid">
+
+<div
+class="card nutrient-card"
+onclick="mostrarNutriente(this)">
+
+<div class="big-icon">
+🍞
+</div>
+
+<h3>
+Hidratos de carbono
+</h3>
+
+<p>
+También llamados carbohidratos.
+</p>
+
+<div class="nutrient-info">
+
+<strong>
+Función principal:
+</strong>
+
+<p>
+Proporcionan principalmente energía.
+</p>
+
+<strong>
+Ejemplos:
+</strong>
+
+<p>
+Pan, arroz, papa, maíz,
+fideos y cereales.
+</p>
+
+</div>
+
+</div>
+
+<div
+class="card nutrient-card"
+onclick="mostrarNutriente(this)">
+
+<div class="big-icon">
+🥑
+</div>
+
+<h3>
+Lípidos
+</h3>
+
+<p>
+Son conocidos como grasas.
+</p>
+
+<div class="nutrient-info">
+
+<strong>
+Funciones:
+</strong>
+
+<p>
+
+Proporcionan energía,
+forman parte de las células
+y participan en diferentes procesos.
+
+</p>
+
+<strong>
+Ejemplos:
+</strong>
+
+<p>
+Aceites, palta, frutos secos,
+semillas y mantequilla.
+</p>
+
+</div>
+
+</div>
+
+<div
+class="card nutrient-card"
+onclick="mostrarNutriente(this)">
+
+<div class="big-icon">
+🥩
+</div>
+
+<h3>
+Proteínas
+</h3>
+
+<p>
+Son nutrientes fundamentales.
+</p>
+
+<div class="nutrient-info">
+
+<strong>
+Función:
+</strong>
+
+<p>
+
+Participan en el crecimiento
+y formación y reparación de tejidos.
+
+</p>
+
+<strong>
+Ejemplos:
+</strong>
+
+<p>
+
+Carne, pescado, huevos,
+leche, lentejas y porotos.
+
+</p>
+
+</div>
+
+</div>
+
+<div
+class="card nutrient-card"
+onclick="mostrarNutriente(this)">
+
+<div class="big-icon">
+💧
+</div>
+
+<h3>
+Agua
+</h3>
+
+<p>
+Componente esencial del organismo.
+</p>
+
+<div class="nutrient-info">
+
+<strong>
+Funciones:
+</strong>
+
+<p>
+
+Ayuda a regular la temperatura,
+transportar nutrientes y eliminar
+sustancias de desecho.
+
+</p>
+
+</div>
+
+</div>
+
+<div
+class="card nutrient-card"
+onclick="mostrarNutriente(this)">
+
+<div class="big-icon">
+🍊
+</div>
+
+<h3>
+Vitaminas
+</h3>
+
+<p>
+Son necesarias en pequeñas cantidades.
+</p>
+
+<div class="nutrient-info">
+
+<strong>
+Funciones:
+</strong>
+
+<p>
+
+Participan en diferentes procesos
+del organismo.
+
+</p>
+
+</div>
+
+</div>
+
+<div
+class="card nutrient-card"
+onclick="mostrarNutriente(this)">
+
+<div class="big-icon">
+🦴
+</div>
+
+<h3>
+Minerales
+</h3>
+
+<p>
+Son sustancias necesarias
+para diversas funciones.
+</p>
+
+<div class="nutrient-info">
+
+<strong>
+Ejemplos:
+</strong>
+
+<p>
+Calcio, hierro, potasio y sodio.
+</p>
+
+<strong>
+Importancia:
+</strong>
+
+<p>
+
+Participan en funciones relacionadas
+con huesos, sangre, músculos
+y sistema nervioso.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ACTIVIDAD NUTRIENTES
+========================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+🧠 ¿Qué nutriente destaca?
+</h2>
+
+<p>
+
+Relaciona cada alimento con el nutriente
+que contiene principalmente.
+
+Después de responder,
+la aplicación explicará por qué.
+
+</p>
+
+</div>
+
+<div class="activity-box">
+
+<div id="nutFood"
+class="food-display">
+🍚
+</div>
+
+<div id="nutFoodName"
+class="food-name">
+Arroz
+</div>
+
+<div class="choice-container">
+
+<button
+class="choice-btn"
+onclick="responderNutriente('carbohidratos')">
+
+🍞 Carbohidratos
+
+</button>
+
+<button
+class="choice-btn"
+onclick="responderNutriente('proteinas')">
+
+🥩 Proteínas
+
+</button>
+
+<button
+class="choice-btn"
+onclick="responderNutriente('lipidos')">
+
+🥑 Lípidos
+
+</button>
+
+</div>
+
+<div
+id="nutFeedback"
+class="feedback">
+</div>
+
+<button
+class="btn-primary"
+onclick="siguienteNutriente()">
+
+➡️ Siguiente alimento
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section id="quiz" class="section">
+
+<div class="section-title">
+
+<div class="number">
+🎮
+</div>
+
+<h2>
+El gran reto de los alimentos
+</h2>
+
+<p>
+Ahora comprueba cuánto aprendiste.
+</p>
+
+</div>
+
+<div class="quiz-container">
+
+<div class="progress-container">
+
+<div
+id="progressBar"
+class="progress-bar">
+</div>
+
+</div>
+
+<div id="quizContent">
+
+<div
+id="questionNumber"
+class="question-number">
+
+Pregunta 1 de 10
+
+</div>
+
+<div
+id="question"
+class="question">
+
+Cargando pregunta...
+
+</div>
+
+<div id="options">
+</div>
+
+<div id="quizExplanation">
+</div>
+
+<button
+id="nextButton"
+class="btn-primary"
+onclick="siguientePregunta()"
+style="display:none;">
+
+➡️ Siguiente pregunta
+
+</button>
+
+</div>
+
+<div id="result"
+class="result">
+
+<div class="result-icon">
+🏆
+</div>
+
+<h2>
+¡Quiz terminado!
+</h2>
+
+<p>
+Tu puntuación fue:
+</p>
+
+<div
+id="score"
+class="score">
+
+0/10
+
+</div>
+
+<p id="resultMessage">
+</p>
+
+<button
+class="btn-primary"
+onclick="reiniciarQuiz()">
+
+🔄 Intentar nuevamente
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONCLUSIÓN
+========================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+🌱 Lo que debemos recordar
+</h2>
+
+</div>
+
+<div class="highlight">
+
+<p>
+
+Los alimentos son fundamentales porque
+proporcionan energía y nutrientes necesarios
+para el funcionamiento del organismo.
+
+</p>
+
+<br>
+
+<p>
+
+Una alimentación variada permite obtener
+diferentes nutrientes como carbohidratos,
+proteínas, grasas, vitaminas, minerales y agua.
+
+</p>
+
+<br>
+
+<p>
+
+<strong>
+
+Conocer los alimentos nos ayuda a comprender
+mejor su importancia y a tomar mejores
+decisiones para nuestra alimentación y bienestar.
+
+</strong>
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<strong>
+🥗 DESCUBRIENDO LOS ALIMENTOS
+</strong>
+
+<p>
+Una experiencia interactiva para aprender
+</p>
+
+<div class="footer-members">
+
+<span class="footer-members-title">
+INTEGRANTES
+</span>
+
+<div class="footer-members-list">
+
+<span>
+Elvia Salinas Ramos
+</span>
+
+<span>
+Amalia Damián Mollo
+</span>
+
+<span>
+Alexander López Trujillo
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   SONIDOS — VOLUMEN AUMENTADO
+===================================================== */
+
+let audioCtx = null;
+
+
+function initAudio(){
+
+    if(!audioCtx){
+
+        const AC =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+        if(AC){
+
+            audioCtx =
+            new AC();
+
+        }
+
+    }
+
+    if(
+        audioCtx &&
+        audioCtx.state === "suspended"
+    ){
+
+        audioCtx.resume();
+
+    }
+
+}
+
+
+/* 
+   El volumen se aumentó de aproximadamente
+   0.055 a 0.15 / 0.17.
+*/
+
+function tone(
+    frecuencia,
+    duracion,
+    tipo="sine",
+    volumen=.15,
+    retraso=0
+){
+
+    if(!audioCtx)return;
+
+
+    const oscilador =
+    audioCtx.createOscillator();
+
+    const ganancia =
+    audioCtx.createGain();
+
+
+    oscilador.type =
+    tipo;
+
+    oscilador.frequency.value =
+    frecuencia;
+
+
+    ganancia.gain.setValueAtTime(
+        0,
+        audioCtx.currentTime +
+        retraso
+    );
+
+
+    ganancia.gain.linearRampToValueAtTime(
+        volumen,
+        audioCtx.currentTime +
+        retraso +
+        .01
+    );
+
+
+    ganancia.gain.exponentialRampToValueAtTime(
+        .001,
+        audioCtx.currentTime +
+        retraso +
+        duracion
+    );
+
+
+    oscilador.connect(
+        ganancia
+    );
+
+    ganancia.connect(
+        audioCtx.destination
+    );
+
+
+    oscilador.start(
+        audioCtx.currentTime +
+        retraso
+    );
+
+
+    oscilador.stop(
+        audioCtx.currentTime +
+        retraso +
+        duracion +
+        .02
+    );
+
+}
+
+
+/* =========================
+   SONIDO DE ACIERTO
+========================= */
+
+function sonidoCorrecto(){
+
+    initAudio();
+
+
+    tone(
+        523,
+        .15,
+        "sine",
+        .15,
+        0
+    );
+
+
+    tone(
+        659,
+        .17,
+        "sine",
+        .15,
+        .10
+    );
+
+
+    tone(
+        784,
+        .25,
+        "sine",
+        .17,
+        .21
+    );
+
+}
+
+
+/* =========================
+   SONIDO DE ERROR
+========================= */
+
+function sonidoError(){
+
+    initAudio();
+
+
+    tone(
+        260,
+        .18,
+        "sawtooth",
+        .14,
+        0
+    );
+
+
+    tone(
+        190,
+        .24,
+        "sawtooth",
+        .14,
+        .14
+    );
+
+}
+
+
+document.addEventListener(
+    "click",
+    initAudio,
+    {once:true}
+);
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+function irA(id){
+
+    document
+    .getElementById(id)
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   ALIMENTOS PERECIBLES
+===================================================== */
+
+const alimentos = [
+
+{
+
+emoji:"🥩",
+nombre:"Carne",
+respuesta:"perecible",
+
+razon:
+
+"La carne es perecible porque contiene bastante agua y nutrientes que favorecen el crecimiento de microorganismos. Por eso necesita refrigeración o congelación y puede deteriorarse rápidamente si se deja a temperatura ambiente."
+
+},
+
+{
+
+emoji:"🍎",
+nombre:"Manzana",
+respuesta:"perecible",
+
+razon:
+
+"La manzana es perecible porque, aunque puede durar varios días, con el tiempo se deteriora por procesos naturales y por microorganismos. Su conservación mejora en condiciones adecuadas."
+
+},
+
+{
+
+emoji:"🍚",
+nombre:"Arroz seco",
+respuesta:"noperecible",
+
+razon:
+
+"El arroz seco es no perecible porque tiene poca humedad disponible para el crecimiento de muchos microorganismos. Si se mantiene seco, limpio y bien almacenado puede conservarse durante mucho tiempo."
+
+},
+
+{
+
+emoji:"🥛",
+nombre:"Leche",
+respuesta:"perecible",
+
+razon:
+
+"La leche es perecible porque contiene agua y nutrientes que permiten el desarrollo de microorganismos. Necesita refrigeración y debe conservarse según las indicaciones del producto."
+
+},
+
+{
+
+emoji:"🥫",
+nombre:"Conserva",
+respuesta:"noperecible",
+
+razon:
+
+"Una conserva cerrada y correctamente procesada puede conservarse durante mucho tiempo porque el tratamiento y el envase ayudan a evitar el crecimiento de microorganismos. Una vez abierta necesita refrigeración."
+
+},
+
+{
+
+emoji:"🍝",
+nombre:"Fideos secos",
+respuesta:"noperecible",
+
+razon:
+
+"Los fideos secos tienen poca humedad, por lo que pueden conservarse durante mucho tiempo si se mantienen en un lugar seco, limpio y protegido."
+
+}
+
+];
+
+
+let alimentoActual = 0;
+
+
+function clasificar(respuesta){
+
+    initAudio();
+
+
+    const alimento =
+    alimentos[alimentoActual];
+
+
+    const box =
+    document.getElementById(
+        "classificationFeedback"
+    );
+
+
+    if(
+        respuesta ===
+        alimento.respuesta
+    ){
+
+        sonidoCorrecto();
+
+
+        box.className =
+        "feedback correct";
+
+
+        box.innerHTML =
+
+        `✅ ¡Correcto!
+
+        <div class="why">
+        ${alimento.razon}
+        </div>`;
+
+    }
+
+    else{
+
+        sonidoError();
+
+
+        const correcta =
+        alimento.respuesta ===
+        "perecible"
+
+        ? "PERECIBLE"
+        : "NO PERECIBLE";
+
+
+        box.className =
+        "feedback incorrect";
+
+
+        box.innerHTML =
+
+        `❌ No es correcto.
+
+        <div class="why">
+        ${alimento.razon}
+        </div>
+
+        <div class="correct-answer">
+        Respuesta correcta:
+        ${correcta}.
+        </div>`;
+
+    }
+
+}
+
+
+function siguienteAlimento(){
+
+    alimentoActual =
+    (alimentoActual + 1)
+    % alimentos.length;
+
+
+    const alimento =
+    alimentos[alimentoActual];
+
+
+    document.getElementById(
+        "foodDisplay"
+    ).textContent =
+    alimento.emoji;
+
+
+    document.getElementById(
+        "foodName"
+    ).textContent =
+    alimento.nombre;
+
+
+    const box =
+    document.getElementById(
+        "classificationFeedback"
+    );
+
+
+    box.className =
+    "feedback";
+
+    box.textContent = "";
+
+}
+
+
+/* =====================================================
+   PH
+===================================================== */
+
+const alimentosPH = [
+
+{
+
+emoji:"🍋",
+
+nombre:"Limón",
+
+respuesta:"acido",
+
+ph:"aprox. 2–3",
+
+razones:{
+
+acido:
+
+"El limón es ácido porque contiene ácidos naturales, principalmente ácido cítrico. Su pH está muy por debajo de 7.",
+
+neutro:
+
+"No es neutro porque un pH neutro corresponde aproximadamente a 7. El limón tiene un pH mucho menor.",
+
+alcalino:
+
+"No es alcalino porque los alimentos alcalinos tienen un pH mayor que 7. El limón tiene un pH ácido, aproximadamente entre 2 y 3."
+
+}
+
+},
+
+{
+
+emoji:"🍅",
+
+nombre:"Tomate",
+
+respuesta:"acido",
+
+ph:"aprox. 4–4.5",
+
+razones:{
+
+acido:
+
+"El tomate es ácido porque contiene ácidos orgánicos naturales. Su pH es menor que 7, generalmente alrededor de 4 a 4,5.",
+
+neutro:
+
+"No es neutro porque el pH neutro es 7. El tomate tiene un pH menor que 7.",
+
+alcalino:
+
+"No es alcalino porque un alimento alcalino tendría un pH mayor que 7. El tomate está por debajo de 7, por lo que es ácido."
+
+}
+
+},
+
+{
+
+emoji:"💧",
+
+nombre:"Agua pura",
+
+respuesta:"neutro",
+
+ph:"aprox. 7",
+
+razones:{
+
+acido:
+
+"No se considera ácida en esta actividad porque el agua pura tiene un pH cercano a 7.",
+
+neutro:
+
+"Es neutra porque su pH se encuentra aproximadamente en 7.",
+
+alcalino:
+
+"No se considera alcalina porque un pH alcalino sería mayor que 7; el agua pura se encuentra alrededor de 7."
+
+}
+
+},
+
+{
+
+emoji:"🥛",
+
+nombre:"Leche",
+
+respuesta:"acido",
+
+ph:"aprox. 6.5–6.7",
+
+razones:{
+
+acido:
+
+"La leche es ligeramente ácida porque su pH suele estar por debajo de 7, aproximadamente entre 6,5 y 6,7.",
+
+neutro:
+
+"No es exactamente neutra porque su pH suele ser ligeramente menor que 7.",
+
+alcalino:
+
+"No es alcalina porque su pH no supera 7; normalmente es ligeramente ácido."
+
+}
+
+}
+
+];
+
+
+let phActual = 0;
+
+
+function responderPH(respuesta){
+
+    initAudio();
+
+
+    const alimento =
+    alimentosPH[phActual];
+
+
+    const box =
+    document.getElementById(
+        "phFeedback"
+    );
+
+
+    const etiquetas = {
+
+        acido:"ÁCIDO",
+
+        neutro:"NEUTRO",
+
+        alcalino:"ALCALINO"
+
+    };
+
+
+    if(
+        respuesta ===
+        alimento.respuesta
+    ){
+
+        sonidoCorrecto();
+
+
+        box.className =
+        "feedback correct";
+
+
+        box.innerHTML =
+
+        `✅ ¡Correcto!
+
+        <div class="why">
+        ${alimento.razones[respuesta]}
+        </div>
+
+        <div class="correct-answer">
+
+        Clasificación:
+        ${etiquetas[alimento.respuesta]}
+
+        · pH ${alimento.ph}.
+
+        </div>`;
+
+    }
+
+    else{
+
+        sonidoError();
+
+
+        box.className =
+        "feedback incorrect";
+
+
+        box.innerHTML =
+
+        `❌ No es correcto.
+
+        <div class="why">
+
+        ${alimento.razones[respuesta]}
+
+        </div>
+
+        <div class="correct-answer">
+
+        La respuesta correcta es:
+        ${etiquetas[alimento.respuesta]}.
+
+        ${alimento.razones[alimento.respuesta]}
+
+        </div>`;
+
+    }
+
+}
+
+
+function siguientePH(){
+
+    phActual =
+    (phActual + 1)
+    % alimentosPH.length;
+
+
+    const alimento =
+    alimentosPH[phActual];
+
+
+    document.getElementById(
+        "phFood"
+    ).textContent =
+    alimento.emoji;
+
+
+    document.getElementById(
+        "phFoodName"
+    ).textContent =
+    alimento.nombre;
+
+
+    const box =
+    document.getElementById(
+        "phFeedback"
+    );
+
+
+    box.className =
+    "feedback";
+
+    box.textContent = "";
+
+}
+
+
+/* =====================================================
+   TARJETAS DE NUTRIENTES
+===================================================== */
+
+function mostrarNutriente(card){
+
+    card.classList.toggle(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   ACTIVIDAD DE NUTRIENTES
+===================================================== */
+
+const nutrientes = [
+
+{
+
+emoji:"🍚",
+
+nombre:"Arroz",
+
+respuesta:"carbohidratos",
+
+razones:{
+
+carbohidratos:
+
+"El arroz contiene principalmente almidón, un carbohidrato complejo que el organismo puede utilizar como fuente de energía.",
+
+proteinas:
+
+"El arroz sí contiene algo de proteína, pero no es el nutriente que destaca principalmente en este alimento.",
+
+lipidos:
+
+"El arroz seco contiene una cantidad relativamente pequeña de grasa. Por eso no se considera principalmente una fuente de lípidos."
+
+}
+
+},
+
+{
+
+emoji:"🥩",
+
+nombre:"Carne",
+
+respuesta:"proteinas",
+
+razones:{
+
+carbohidratos:
+
+"La carne fresca prácticamente no aporta carbohidratos en cantidades importantes. Su nutriente característico son las proteínas.",
+
+proteinas:
+
+"La carne destaca por su contenido de proteínas, que participan en la formación y reparación de tejidos.",
+
+lipidos:
+
+"La carne puede contener grasa dependiendo del corte, pero en esta actividad el nutriente que destaca es la proteína."
+
+}
+
+},
+
+{
+
+emoji:"🥚",
+
+nombre:"Huevo",
+
+respuesta:"proteinas",
+
+razones:{
+
+carbohidratos:
+
+"El huevo contiene muy pocos carbohidratos, por lo que no es el nutriente que destaca.",
+
+proteinas:
+
+"El huevo es una buena fuente de proteínas de alta calidad, importantes para la formación y reparación de tejidos.",
+
+lipidos:
+
+"La yema contiene grasas, pero el huevo también aporta una cantidad importante de proteínas. En esta actividad destacamos las proteínas."
+
+}
+
+},
+
+{
+
+emoji:"🥑",
+
+nombre:"Palta",
+
+respuesta:"lipidos",
+
+razones:{
+
+carbohidratos:
+
+"La palta contiene algunos carbohidratos y fibra, pero se caracteriza especialmente por su contenido de grasas.",
+
+proteinas:
+
+"La palta aporta pequeñas cantidades de proteína, pero no es una fuente principal de este nutriente.",
+
+lipidos:
+
+"La palta destaca por sus grasas, especialmente grasas insaturadas. Por eso se clasifica aquí como fuente de lípidos."
+
+}
+
+},
+
+{
+
+emoji:"🍞",
+
+nombre:"Pan",
+
+respuesta:"carbohidratos",
+
+razones:{
+
+carbohidratos:
+
+"El pan se elabora principalmente con harina de cereales, que contiene almidón. Por eso aporta principalmente carbohidratos.",
+
+proteinas:
+
+"El pan puede contener proteínas procedentes de la harina, pero no son el nutriente que destaca principalmente.",
+
+lipidos:
+
+"Algunos panes contienen grasas añadidas, pero el componente predominante suele ser el carbohidrato procedente de la harina."
+
+}
+
+}
+
+];
+
+
+let nutrienteActual = 0;
+
+
+function responderNutriente(respuesta){
+
+    initAudio();
+
+
+    const alimento =
+    nutrientes[nutrienteActual];
+
+
+    const box =
+    document.getElementById(
+        "nutFeedback"
+    );
+
+
+    const etiquetas = {
+
+        carbohidratos:
+        "CARBOHIDRATOS",
+
+        proteinas:
+        "PROTEÍNAS",
+
+        lipidos:
+        "LÍPIDOS"
+
+    };
+
+
+    if(
+        respuesta ===
+        alimento.respuesta
+    ){
+
+        sonidoCorrecto();
+
+
+        box.className =
+        "feedback correct";
+
+
+        box.innerHTML =
+
+        `✅ ¡Excelente!
+
+        <div class="why">
+
+        ${alimento.razones[respuesta]}
+
+        </div>
+
+        <div class="correct-answer">
+
+        Respuesta correcta:
+        ${etiquetas[alimento.respuesta]}.
+
+        </div>`;
+
+    }
+
+    else{
+
+        sonidoError();
+
+
+        box.className =
+        "feedback incorrect";
+
+
+        box.innerHTML =
+
+        `❌ No es correcto.
+
+        <div class="why">
+
+        ${alimento.razones[respuesta]}
+
+        </div>
+
+        <div class="correct-answer">
+
+        La respuesta correcta es:
+        ${etiquetas[alimento.respuesta]}.
+
+        ${alimento.razones[alimento.respuesta]}
+
+        </div>`;
+
+    }
+
+}
+
+
+function siguienteNutriente(){
+
+    nutrienteActual =
+    (nutrienteActual + 1)
+    % nutrientes.length;
+
+
+    const alimento =
+    nutrientes[nutrienteActual];
+
+
+    document.getElementById(
+        "nutFood"
+    ).textContent =
+    alimento.emoji;
+
+
+    document.getElementById(
+        "nutFoodName"
+    ).textContent =
+    alimento.nombre;
+
+
+    const box =
+    document.getElementById(
+        "nutFeedback"
+    );
+
+
+    box.className =
+    "feedback";
+
+    box.textContent = "";
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const preguntas = [
+
+{
+
+pregunta:
+"¿Qué son los alimentos?",
+
+opciones:[
+
+"Sustancias que proporcionan nutrientes y energía",
+
+"Solamente bebidas",
+
+"Solamente productos de origen animal",
+
+"Medicamentos"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"Los alimentos proporcionan nutrientes y energía que el organismo necesita para realizar sus funciones."
+
+},
+
+{
+
+pregunta:
+"¿Cuál es un alimento de origen vegetal?",
+
+opciones:[
+
+"Huevo",
+
+"Carne",
+
+"Zanahoria",
+
+"Leche"
+
+],
+
+correcta:2,
+
+explicacion:
+
+"La zanahoria procede de una planta, por lo que es un alimento de origen vegetal."
+
+},
+
+{
+
+pregunta:
+"¿Cuál es un alimento de origen animal?",
+
+opciones:[
+
+"Arroz",
+
+"Lenteja",
+
+"Pescado",
+
+"Maíz"
+
+],
+
+correcta:2,
+
+explicacion:
+
+"El pescado procede de un animal, por lo que es de origen animal."
+
+},
+
+{
+
+pregunta:
+"¿Cuál es una función de los alimentos?",
+
+opciones:[
+
+"Proporcionar energía",
+
+"Cambiar el clima",
+
+"Producir electricidad",
+
+"Cambiar el color de los ojos"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"Una de las funciones de los alimentos es proporcionar energía para las actividades y funciones del organismo."
+
+},
+
+{
+
+pregunta:
+"¿Qué nutriente cumple principalmente una función constructora?",
+
+opciones:[
+
+"Proteínas",
+
+"Agua",
+
+"Vitaminas",
+
+"Carbohidratos"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"Las proteínas participan especialmente en el crecimiento y en la formación y reparación de tejidos."
+
+},
+
+{
+
+pregunta:
+"¿Cuál de estos alimentos es perecible?",
+
+opciones:[
+
+"Arroz seco",
+
+"Carne",
+
+"Azúcar",
+
+"Fideos secos"
+
+],
+
+correcta:1,
+
+explicacion:
+
+"La carne es perecible y necesita condiciones adecuadas de conservación para retrasar su deterioro."
+
+},
+
+{
+
+pregunta:
+"Un pH menor que 7 indica una sustancia...",
+
+opciones:[
+
+"Ácida",
+
+"Neutra",
+
+"Alcalina",
+
+"Sin pH"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"En la escala de pH, los valores menores que 7 corresponden a sustancias ácidas."
+
+},
+
+{
+
+pregunta:
+"¿Cuál de estos alimentos contiene principalmente carbohidratos?",
+
+opciones:[
+
+"Arroz",
+
+"Carne",
+
+"Aceite",
+
+"Mantequilla"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"El arroz contiene principalmente almidón, un carbohidrato complejo."
+
+},
+
+{
+
+pregunta:
+"¿Cuál de estos es un alimento que destaca por sus lípidos?",
+
+opciones:[
+
+"Aceite",
+
+"Arroz",
+
+"Lenteja",
+
+"Naranja"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"El aceite está compuesto principalmente por grasas o lípidos."
+
+},
+
+{
+
+pregunta:
+"¿Por qué es importante consumir diferentes alimentos?",
+
+opciones:[
+
+"Para obtener diferentes nutrientes",
+
+"Para comer siempre lo mismo",
+
+"Para evitar el agua",
+
+"Para eliminar todas las vitaminas"
+
+],
+
+correcta:0,
+
+explicacion:
+
+"Una alimentación variada ayuda a obtener distintos nutrientes que cumplen funciones diferentes en el organismo."
+
+}
+
+];
+
+
+let preguntaActual = 0;
+
+let puntuacion = 0;
+
+let respondida = false;
+
+
+function cargarPregunta(){
+
+    respondida = false;
+
+
+    const pregunta =
+    preguntas[preguntaActual];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+
+    `Pregunta
+    ${preguntaActual + 1}
+    de
+    ${preguntas.length}`;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+    pregunta.pregunta;
+
+
+    document.getElementById(
+        "options"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "quizExplanation"
+    ).innerHTML = "";
+
+
+    pregunta.opciones.forEach(
+        (opcion,indice)=>{
+
+
+        const boton =
+        document.createElement(
+            "button"
+        );
+
+
+        boton.className =
+        "quiz-option";
+
+
+        boton.textContent =
+        opcion;
+
+
+        boton.onclick =
+        ()=>responderQuiz(
+            indice,
+            boton
+        );
+
+
+        document.getElementById(
+            "options"
+        ).appendChild(
+            boton
+        );
+
+
+    });
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+    "none";
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+
+    (
+        preguntaActual /
+        preguntas.length *
+        100
+    ) + "%";
+
+}
+
+
+function responderQuiz(
+    indice,
+    boton
+){
+
+    if(respondida)return;
+
+
+    initAudio();
+
+    respondida = true;
+
+
+    const pregunta =
+    preguntas[preguntaActual];
+
+
+    const botones =
+    document.querySelectorAll(
+        ".quiz-option"
+    );
+
+
+    botones.forEach(
+        (b,i)=>{
+
+            if(
+                i ===
+                pregunta.correcta
+            ){
+
+                b.classList.add(
+                    "correct"
+                );
+
+            }
+
+        }
+    );
+
+
+    const explicacion =
+    document.getElementById(
+        "quizExplanation"
+    );
+
+
+    if(
+        indice ===
+        pregunta.correcta
+    ){
+
+        puntuacion++;
+
+        sonidoCorrecto();
+
+
+        explicacion.innerHTML =
+
+        `<div class="feedback correct">
+
+        ✅ ¡Correcto!
+
+        <div class="why">
+
+        ${pregunta.explicacion}
+
+        </div>
+
+        </div>`;
+
+    }
+
+    else{
+
+        boton.classList.add(
+            "incorrect"
+        );
+
+
+        sonidoError();
+
+
+        explicacion.innerHTML =
+
+        `<div class="feedback incorrect">
+
+        ❌ Respuesta incorrecta.
+
+        <div class="why">
+
+        ${pregunta.explicacion}
+
+        </div>
+
+        <div class="correct-answer">
+
+        Respuesta correcta:
+
+        ${pregunta.opciones[pregunta.correcta]}
+
+        </div>
+
+        </div>`;
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+    "inline-block";
+
+}
+
+
+function siguientePregunta(){
+
+    preguntaActual++;
+
+
+    if(
+        preguntaActual >=
+        preguntas.length
+    ){
+
+        mostrarResultado();
+
+        return;
+
+    }
+
+
+    cargarPregunta();
+
+}
+
+
+function mostrarResultado(){
+
+    document.getElementById(
+        "quizContent"
+    ).style.display =
+    "none";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+    "block";
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+    "100%";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+
+    `${puntuacion}/${preguntas.length}`;
+
+
+    const porcentaje =
+    puntuacion /
+    preguntas.length *
+    100;
+
+
+    let mensaje = "";
+
+
+    if(
+        porcentaje === 100
+    ){
+
+        mensaje =
+        "🌟 ¡Excelente! Dominas el tema de los alimentos.";
+
+    }
+
+    else if(
+        porcentaje >= 80
+    ){
+
+        mensaje =
+        "👏 ¡Muy bien! Tienes un gran conocimiento del tema.";
+
+    }
+
+    else if(
+        porcentaje >= 60
+    ){
+
+        mensaje =
+        "👍 ¡Buen trabajo! Sigue repasando algunos conceptos.";
+
+    }
+
+    else{
+
+        mensaje =
+        "📚 Repasa el contenido e inténtalo nuevamente. ¡Tú puedes!";
+
+    }
+
+
+    document.getElementById(
+        "resultMessage"
+    ).textContent =
+    mensaje;
+
+}
+
+
+function reiniciarQuiz(){
+
+    initAudio();
+
+
+    preguntaActual = 0;
+
+    puntuacion = 0;
+
+
+    document.getElementById(
+        "quizContent"
+    ).style.display =
+    "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+    "none";
+
+
+    cargarPregunta();
+
+}
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+cargarPregunta();
+
+</script>
+
+</body>
+</html>
